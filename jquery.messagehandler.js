@@ -105,7 +105,7 @@
       base.$el.removeData('GS.message_handler');
     };
 
-    // Run initializer
+    /* Run initializer */
     base.init();
   };
 
