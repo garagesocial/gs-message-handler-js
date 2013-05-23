@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>messageHandlerJS - Example</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link href="../jquery.messagehandler.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+
+        <div class="wrapper" style="width: 500px;">
+            <div id="message-handler"></div>
+        </div>
+        <button id="submit-btn">Submit</button>
+
+        <script>window.jQuery || document.write('<script src="jquery-1.9.1.min.js"><\/script>')</script>
+        <script src="../jquery.messagehandler.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                $("#message-handler").gs_message_handler();
+
+                $("#submit-btn").click(function() {
+                    $("#message-handler").gs_message_handler('set', {message: 'Example: Information has been saved', type: 'success'});
+                });
+            });
+        </script>
+
+    </body>
+</html>
