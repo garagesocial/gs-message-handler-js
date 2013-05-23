@@ -47,3 +47,7 @@ This destroys the plugin on the element.
 ```javascript
  $("#message").gs_message_handler('destroy');
 ```
+
+### Original Contributors
+*  Maxime Rassi
+*  Alexis Camus
