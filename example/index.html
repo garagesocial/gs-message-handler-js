@@ -16,17 +16,27 @@
         <div class="wrapper" style="width: 500px;">
             <div id="message-handler"></div>
         </div>
-        <button id="submit-btn">Submit</button>
+        <button id="set-btn">Set random message</button>
+        <button id="clear-btn">Clear message</button>
 
         <script>window.jQuery || document.write('<script src="jquery-1.9.1.min.js"><\/script>')</script>
         <script src="../jquery.messagehandler.js"></script>
-
         <script>
             $(document).ready(function() {
                 $("#message-handler").gs_message_handler();
 
-                $("#submit-btn").click(function() {
-                    $("#message-handler").gs_message_handler('set', {message: 'Example: Information has been saved', type: 'success'});
+                var types = ['error', 'warning', 'success', 'info'];
+
+                $("#set-btn").click(function() {
+                    var randomType = types[Math.floor(Math.random()*types.length)];
+                    $("#message-handler").gs_message_handler('set', {
+                        message: '<strong>' + randomType.charAt(0).toUpperCase() + randomType.slice(1) + '!</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+                        type: randomType
+                    });
+                });
+
+                $("#clear-btn").click(function() {
+                    $("#message-handler").gs_message_handler('clear');
                 });
             });
         </script>
