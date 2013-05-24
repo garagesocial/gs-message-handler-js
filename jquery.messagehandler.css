@@ -11,6 +11,9 @@
   overflow: hidden;
   background: #FCF8E3;
   color: #C09853;
+  -webkit-transition: background-color 0.2s, color 0.2s;
+  -moz-transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
 }
 .gs-message:after {
   position: absolute;
@@ -21,7 +24,10 @@
   left: 0;
   border-top: 1px solid;
   border-bottom: 1px solid;
-  border-color: #f7ecb5;
+  border-color: #F0E3A1;
+  -webkit-transition: border 0.2s;
+  -moz-transition: border 0.2s;
+  transition: border 0.2s;
 }
 .gs-message > div {
   padding: 8px 12px;
