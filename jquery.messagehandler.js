@@ -130,7 +130,7 @@
           return;
         }
 
-        // apply method
+        /* apply method */
         returnVal = instance[options].apply(instance, args);
       });
     } else {
@@ -138,11 +138,11 @@
       this.each(function() {
         var instance = $.data(this, 'message_handler');
         if (instance) {
-          // apply options & init
+          /* apply options & init */
           instance.option(options || {});
           instance.init();
         } else {
-          // initialize new instance
+          /* initialize new instance */
           $.data(this, 'message_handler', new $.GS.message_handler(this, options));
         }
 
