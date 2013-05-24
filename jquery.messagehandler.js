@@ -46,6 +46,7 @@
      * @retval {void}
      */
     base.set = function(options) {
+      var previousType = base.type;
       base.message = options.message;
       base.type = options.type;
       base.timeout = options.timeout;
@@ -56,14 +57,23 @@
       }
 
       /* If the message is not already set, set it as the content of the element */
-      if (base.$el.html() != base.message) {
+      if (!previousType) {
         var clss, height;
-        clss = base.type !== 'warning' ? ' gs-message-' + base.type : '';
+        clss = base.getClassFromType(base.type);
         base.$el.html('<div class="gs-message' + clss + '" style="height:0px;"><div>' + base.message + '</div></div>');
         height = base.$el.find('.gs-message > div').outerHeight();
         base.$el.find('.gs-message').animate({
           height: height
         }, 200);
+      }
+      /* Or just change it */
+      else {
+        var message = base.$el.find('.gs-message');
+        if(base.type != previousType) {
+          message.addClass(base.getClassFromType(base.type));
+          message.removeClass(base.getClassFromType(previousType));
+        }
+        message.children('div').html(base.message);
       }
 
       /* If a timeout was specified, automatically clear the error on expiration */
@@ -105,7 +115,16 @@
       base.$el.removeData('GS.message_handler');
     };
 
-    /* Run initializer */
+    /**
+     * Check whether object is a function
+     * @param  {object}   Variable to check if content is a function
+     * @return {boolean}  True or False whether the content is a function
+     */
+    base.getClassFromType = function(type) {
+      return type !== 'warning' ? ' gs-message-' + type : '';
+    };
+
+    // Run initializer
     base.init();
   };
 
@@ -130,7 +149,7 @@
           return;
         }
 
-        /* apply method */
+        // apply method
         returnVal = instance[options].apply(instance, args);
       });
     } else {
@@ -138,11 +157,11 @@
       this.each(function() {
         var instance = $.data(this, 'message_handler');
         if (instance) {
-          /* apply options & init */
+          // apply options & init
           instance.option(options || {});
           instance.init();
         } else {
-          /* initialize new instance */
+          // initialize new instance
           $.data(this, 'message_handler', new $.GS.message_handler(this, options));
         }
 
