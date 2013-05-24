@@ -36,7 +36,7 @@
       if ($.isPlainObject(key)) {
         this.options = $.extend(true, this.options, key);
       }
-    },
+    };
 
     /**
      * Set message
@@ -72,7 +72,7 @@
           base.clear();
         }, base.timeout);
       }
-    },
+    };
 
     /**
      * Clear message
