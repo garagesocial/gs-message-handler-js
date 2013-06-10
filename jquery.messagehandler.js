@@ -4,6 +4,8 @@
  *
  * Licensed under the MIT license.
  * Copyright 2013 Garagesocial, Inc.
+ *
+ * v1.0.1
  */
 
 ;(function($) {
@@ -61,10 +63,6 @@
         var clss, height;
         clss = base.getClassFromType(base.type);
         base.$el.html('<div class="gs-message' + clss + '" style="height:0px;"><div>' + base.message + '</div></div>');
-        height = base.$el.find('.gs-message > div').outerHeight();
-        base.$el.find('.gs-message').animate({
-          height: height
-        }, 200);
       }
       /* Or just change it */
       else {
@@ -75,6 +73,12 @@
         }
         message.children('div').html(base.message);
       }
+
+      /* Re adjust the height after each message set */
+      height = base.$el.find('.gs-message > div').outerHeight();
+      base.$el.find('.gs-message').animate({
+        height: height
+      }, 200);
 
       /* If a timeout was specified, automatically clear the error on expiration */
       if (base.timeout !== undefined) {

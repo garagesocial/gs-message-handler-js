@@ -1,6 +1,8 @@
 message-handler-js
 ==================
 
+###Current Version: v1.0.1
+
 A basic jQuery plugin to manage and display messages inside a DOM element with states. This can be useful in co-ordination with another script which can use this plugin to provide a consistent mechanism of sending messages back to a user.
 
 ```html
